@@ -142,7 +142,11 @@ extension UIImageView {
         
         UIGraphicsBeginImageContextWithOptions(size, false, scale)
         
-        let context: CGContext = UIGraphicsGetCurrentContext()!
+        guard
+            let context: CGContext = UIGraphicsGetCurrentContext()
+            else {
+                return UIImage()
+        }
         
         if circular {
             // Clip context to a circle
